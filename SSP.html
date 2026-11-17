@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>StudySync - Student Study Planner</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
+
+<div id="loginPage"
+     class="login-page">
+
+    <div class="login-box">
+
+        <h1>✦ Study Planner ✦</h1>
+
+        <h2>Welcome Back 👋</h2>
+
+        <p>
+            Manage your studies smarter.
+        </p>
+
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Student Name"
+        >
+
+
+        <input
+            type="email"
+            id="studentEmail"
+            placeholder="Email / Student ID"
+        >
+
+
+        <input
+            type="password"
+            id="studentPassword"
+            placeholder="Password"
+        >
+
+
+        <p class="forgot-text">
+
+            <a href="#"
+               onclick="showForgotPassword(); return false;">
+                Forgot Password?
+            </a>
+
+        </p>
+
+
+        <button onclick="login()">
+            Login
+        </button>
+
+
+        <p class="signup-text">
+
+            Don't have an account?
+
+            <a href="#"
+               onclick="showSignup(); return false;">
+                Sign Up
+            </a>
+
+        </p>
+
+
+        <p class="small-text">
+            New student? Create your account and start planning.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SIGN UP PAGE
+===================================================== -->
+
+<div id="signupPage"
+     class="auth-page hidden">
+
+    <div class="auth-box">
+
+        <h1>Create Account</h1>
+
+        <p>
+            Start planning your studies today 📚
+        </p>
+
+
+        <input
+            type="text"
+            id="signupName"
+            placeholder="Full Name"
+        >
+
+
+        <input
+            type="email"
+            id="signupEmail"
+            placeholder="Email Address"
+        >
+
+
+        <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create Password"
+        >
+
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+        >
+
+
+        <button onclick="signup()">
+            Create Account
+        </button>
+
+
+        <p class="signup-text">
+
+            Already have an account?
+
+            <a href="#"
+               onclick="showLogin(); return false;">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FORGOT PASSWORD PAGE
+===================================================== -->
+
+<div id="forgotPage"
+     class="auth-page hidden">
+
+    <div class="auth-box">
+
+        <h1>Forgot Password?</h1>
+
+        <p>
+            Reset your StudySync password.
+        </p>
+
+
+        <input
+            type="email"
+            id="forgotEmail"
+            placeholder="Registered Email"
+        >
+
+
+        <button onclick="sendOTP()">
+            Send OTP
+        </button>
+
+
+        <p class="signup-text">
+
+            Remember your password?
+
+            <a href="#"
+               onclick="showLogin(); return false;">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     OTP PAGE
+===================================================== -->
+
+<div id="otpPage"
+     class="auth-page hidden">
+
+    <div class="auth-box">
+
+        <h1>Verify OTP</h1>
+
+        <p>
+            Enter the OTP generated for your account.
+        </p>
+
+
+        <input
+            type="text"
+            id="otpInput"
+            placeholder="Enter 6-digit OTP"
+            maxlength="6"
+        >
+
+
+        <button onclick="verifyOTP()">
+            Verify OTP
+        </button>
+
+
+        <p class="signup-text">
+
+            <a href="#"
+               onclick="showLogin(); return false;">
+                Back to Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     RESET PASSWORD PAGE
+===================================================== -->
+
+<div id="resetPage"
+     class="auth-page hidden">
+
+    <div class="auth-box">
+
+        <h1>Set New Password</h1>
+
+        <p>
+            Create a strong new password.
+        </p>
+
+
+        <input
+            type="password"
+            id="newPassword"
+            placeholder="New Password"
+        >
+
+
+        <input
+            type="password"
+            id="confirmNewPassword"
+            placeholder="Confirm New Password"
+        >
+
+
+        <button onclick="resetPassword()">
+            Reset Password
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MAIN WEBSITE
+===================================================== -->
+
+<div id="website"
+     class="website hidden">
+
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================= -->
+
+    <aside class="sidebar">
+
+        <h2>
+            ✦ StudySync
+        </h2>
+
+
+        <p class="menu-title">
+            MAIN MENU
+        </p>
+
+
+        <button onclick="showPage('dashboard')">
+            🏠 Dashboard
+        </button>
+
+
+        <button onclick="showPage('timetable')">
+            📅 Timetable
+        </button>
+
+
+        <button onclick="showPage('tasks')">
+            ✓ Tasks
+        </button>
+
+
+        <button onclick="showPage('completed')">
+            ☑ Tasks Completed
+        </button>
+
+
+        <button onclick="showPage('advice')">
+            ♡ Study Advice
+        </button>
+
+
+        <button onclick="showPage('accuracy')">
+            ◔ Accuracy
+        </button>
+
+
+<button onclick="showPage('pomodoro')">
+    ⏱️ Focus Timer
+</button>
+
+<button onclick="showPage('calendar')">
+    🗓️ Study Calendar
+</button>
+
+<button onclick="showPage('analytics')">
+    📊 Analytics
+</button>
+
+<button onclick="showPage('notes')">
+    📝 My Notes
+</button>
+
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <p id="profileName">
+                Student
+            </p>
+
+
+            <button onclick="logout()">
+                ↪ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <main class="main-content">
+
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <small>
+                    Student Study Planner
+                </small>
+
+                <h2 id="pageTitle">
+                    Dashboard
+                </h2>
+
+            </div>
+
+             
+<div class="profile">
+
+    <button
+        type="button"
+        id="themeToggle"
+        class="theme-toggle"
+        onclick="toggleTheme()"
+        title="Toggle theme"
+    >
+        ☀️
+    </button>
+
+    <div class="avatar">S</div>
+
+    <span id="topName">Student</span>
+
+</div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================= -->
+
+        <section id="dashboard"
+                 class="page active">
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome">
+
+                <p>
+                    GOOD TO SEE YOU!
+                </p>
+
+
+                <h1>
+
+                    Keep going,
+
+                    <span id="welcomeName">
+                        Student
+                    </span>
+
+                    👋
+
+                </h1>
+
+
+                <p>
+                    Small progress every day creates big results.
+                </p>
+
+            </div>
+
+
+
+            <!-- STAT CARDS -->
+
+            <div class="cards">
+
+               <div class="card streak-card">
+    <h3>🔥 Study Streak</h3>
+    <h1 id="streakCount">0 Days</h1>
+    <p>Keep learning every day!</p>
+</div>
+
+                <div class="card">
+
+                    <h3>
+                        Today's Tasks
+                    </h3>
+
+                    <h1 id="todayTasks">
+                        0
+                    </h1>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        Completed
+                    </h3>
+
+                    <h1 id="completedTasks">
+                        0
+                    </h1>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        Accuracy
+                    </h3>
+
+                    <h1 id="accuracyValue">
+                        0%
+                    </h1>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        Classes Today
+                    </h3>
+
+                    <h1 id="classesToday">
+                        4
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DASHBOARD GRID -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- TIMETABLE -->
+
+                <div class="box">
+
+                    <div class="box-heading">
+
+                        <h2>
+                            Today's Timetable
+                        </h2>
+
+
+                        <button
+                            onclick="showPage('timetable')">
+
+                            View All →
+
+                        </button>
+
+                    </div>
+
+
+                    <div id="todaySchedule">
+
+
+                        <div class="schedule">
+
+                            <b>
+                                09:00 AM
+                            </b>
+
+                            <span>
+                                Data Structures
+                            </span>
+
+                            <small>
+                                Room 204
+                            </small>
+
+                        </div>
+
+
+                        <div class="schedule">
+
+                            <b>
+                                11:00 AM
+                            </b>
+
+                            <span>
+                                Python
+                            </span>
+
+                            <small>
+                                Lab 2
+                            </small>
+
+                        </div>
+
+
+                        <div class="schedule">
+
+                            <b>
+                                02:00 PM
+                            </b>
+
+                            <span>
+                                COA
+                            </span>
+
+                            <small>
+                                Room 105
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MOTIVATION -->
+
+                <div class="box motivation">
+
+                    <h2>
+                        Today's Motivation
+                    </h2>
+
+
+                    <p>
+                        “Success is the sum of small efforts,
+                        repeated day in and day out.”
+                    </p>
+
+
+                    <small>
+                        — StudySync
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUICK TASKS -->
+
+            <div class="box">
+
+                <div class="box-heading">
+
+
+                    <div>
+
+                        <h2>
+                            Quick Tasks
+                        </h2>
+
+                        <p>
+                            Your upcoming study work.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        onclick="addTask()">
+
+                        + Add Task
+
+                    </button>
+
+
+                </div>
+
+
+                <div id="dashboardTaskList">
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+<!-- =====================================
+     POMODORO FOCUS TIMER
+===================================== -->
+
+<section id="pomodoro" class="page">
+
+    <div class="page-heading">
+        <div>
+            <p>FOCUS BETTER</p>
+            <h1>Focus Timer</h1>
+            <span>Stay focused with structured study sessions.</span>
+        </div>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="box timer-card">
+
+            <p id="timerMode">FOCUS SESSION</p>
+
+            <div class="timer-circle">
+                <span id="timerDisplay">25:00</span>
+            </div>
+
+            <div class="timer-controls">
+                <button onclick="startTimer()">▶ Start</button>
+                <button onclick="pauseTimer()">Ⅱ Pause</button>
+                <button onclick="resetTimer()">↻ Reset</button>
+            </div>
+
+            <div class="timer-modes">
+                <button onclick="setTimerMode('focus')">Focus 25m</button>
+                <button onclick="setTimerMode('short')">Short Break 5m</button>
+                <button onclick="setTimerMode('long')">Long Break 15m</button>
+            </div>
+
+            <p id="timerStatus">Ready for your next session?</p>
+
+        </div>
+
+        <div class="box">
+            <h2>Focus Tips</h2>
+            <p>Keep your phone away.</p>
+            <p>Choose one task at a time.</p>
+            <p>Take breaks between sessions.</p>
+            <h3>Completed Sessions</h3>
+            <h1 id="focusSessions">0</h1>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     STUDY CALENDAR
+===================================== -->
+
+<section id="calendar" class="page">
+
+    <div class="page-heading">
+        <div>
+            <p>PLAN YOUR DAYS</p>
+            <h1>Study Calendar</h1>
+            <span>Track your study tasks by date.</span>
+        </div>
+    </div>
+
+    <div class="box">
+
+        <div class="calendar-header">
+
+            <button onclick="changeMonth(-1)">←</button>
+
+            <h2 id="calendarMonth">Month Year</h2>
+
+            <button onclick="changeMonth(1)">→</button>
+
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+        <div id="selectedDateTasks" class="selected-date-tasks">
+            Select a date to see your tasks.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     ANALYTICS
+===================================== -->
+
+<section id="analytics" class="page">
+
+    <div class="page-heading">
+        <div>
+            <p>YOUR PERFORMANCE</p>
+            <h1>Study Analytics</h1>
+            <span>Understand your productivity.</span>
+        </div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Tasks</h3>
+            <h1 id="analyticsTotal">0</h1>
+        </div>
+
+        <div class="card">
+            <h3>Completed Tasks</h3>
+            <h1 id="analyticsCompleted">0</h1>
+        </div>
+
+        <div class="card">
+            <h3>Pending Tasks</h3>
+            <h1 id="analyticsPending">0</h1>
+        </div>
+
+        <div class="card">
+            <h3>Completion Rate</h3>
+            <h1 id="analyticsRate">0%</h1>
+        </div>
+
+    </div>
+
+    <div class="box">
+        <h2>Task Performance</h2>
+
+        <div class="analytics-bar-row">
+            <span>Completed</span>
+            <div class="analytics-track">
+                <div id="analyticsDoneBar"></div>
+            </div>
+            <b id="analyticsDoneText">0%</b>
+        </div>
+
+        <div class="analytics-bar-row">
+            <span>Pending</span>
+            <div class="analytics-track">
+                <div id="analyticsPendingBar"></div>
+            </div>
+            <b id="analyticsPendingText">0%</b>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     NOTES MANAGER
+===================================== -->
+
+<section id="notes" class="page">
+
+    <div class="page-heading">
+        <div>
+            <p>YOUR PERSONAL NOTES</p>
+            <h1>My Notes</h1>
+            <span>Save important study points and ideas.</span>
+        </div>
+    </div>
+
+    <div class="box notes-editor">
+
+        <input
+            type="text"
+            id="noteTitle"
+            placeholder="Enter note title"
+        >
+
+        <select id="noteSubject">
+            <option value="General">General</option>
+            <option value="Python">Python</option>
+            <option value="C Programming">C Programming</option>
+            <option value="COA">COA</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Cyber Security">Cyber Security</option>
+        </select>
+
+        <textarea
+            id="noteContent"
+            placeholder="Write your study notes here..."
+            rows="5"
+        ></textarea>
+
+        <button onclick="addNote()">+ Save Note</button>
+
+    </div>
+
+    <div id="notesList" class="notes-grid"></div>
+
+</section>
+
+
+
+        <!-- =================================================
+             TIMETABLE
+        ================================================= -->
+
+        <section id="timetable"
+                 class="page">
+
+
+            <div class="page-heading">
+
+
+                <div>
+
+                    <p>
+                        PLAN YOUR WEEK
+                    </p>
+
+
+                    <h1>
+                        Timetable
+                    </h1>
+
+
+                    <span>
+                        Organize your classes and study schedule.
+                    </span>
+
+                </div>
+
+
+                <button onclick="addClass()">
+                    + Add Class
+                </button>
+
+
+            </div>
+
+
+
+            <div class="box">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                TIME
+                            </th>
+
+                            <th>
+                                SUBJECT
+                            </th>
+
+                            <th>
+                                ROOM
+                            </th>
+
+                            <th>
+                                DAY
+                            </th>
+
+                            <th>
+                                ACTION
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="timetableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             TASKS
+        ================================================= -->
+
+        <section id="tasks"
+                 class="page">
+
+
+            <div class="page-heading">
+
+
+                <div>
+
+                    <p>
+                        STAY PRODUCTIVE
+                    </p>
+
+
+                    <h1>
+                        Tasks
+                    </h1>
+
+
+                    <span>
+                        Manage assignments and study work.
+                    </span>
+
+                </div>
+
+
+                <button onclick="addTask()">
+                    + Add Task
+                </button>
+
+            </div>
+
+
+
+            <!-- TASK STATISTICS -->
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <h3>
+                        Total Tasks
+                    </h3>
+
+                    <h1 id="totalTask">
+                        0
+                    </h1>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Pending
+                    </h3>
+
+                    <h1 id="pendingTask">
+                        0
+                    </h1>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Completed
+                    </h3>
+
+                    <h1 id="doneTask">
+                        0
+                    </h1>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Completion
+                    </h3>
+
+                    <h1 id="taskCompletion">
+                        0%
+                    </h1>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TASK LIST -->
+
+            <div class="box">
+
+                <div id="taskList">
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COMPLETED
+        ================================================= -->
+
+        <section id="completed"
+                 class="page">
+
+
+            <div class="page-heading">
+
+
+                <div>
+
+                    <p>
+                        YOUR PROGRESS
+                    </p>
+
+
+                    <h1>
+                        Tasks Completed
+                    </h1>
+
+
+                    <span>
+                        Look back at what you have achieved.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-box">
+
+
+                <div class="circle">
+
+                    <span id="completionPercentage">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Completion Rate
+                    </h2>
+
+
+                    <p id="completionText">
+                        Complete your tasks to improve your progress.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- COMPLETED TASKS -->
+
+            <div class="box">
+
+                <h2>
+                    Recently Completed
+                </h2>
+
+
+                <div id="completedList">
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             STUDY ADVICE
+        ================================================= -->
+
+        <section id="advice"
+                 class="page">
+
+
+            <div class="page-heading">
+
+
+                <div>
+
+                    <p>
+                        LEARN SMARTER
+                    </p>
+
+
+                    <h1>
+                        Study Advice
+                    </h1>
+
+
+                    <span>
+                        Simple habits for better study sessions.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="advice-grid">
+
+
+                <div class="advice-card">
+
+                    <div>
+                        ⏱️
+                    </div>
+
+                    <h2>
+                        25–5 Rule
+                    </h2>
+
+                    <p>
+                        Study for 25 minutes and take
+                        a 5-minute break.
+                    </p>
+
+                </div>
+
+
+
+                <div class="advice-card">
+
+                    <div>
+                        📚
+                    </div>
+
+                    <h2>
+                        Active Recall
+                    </h2>
+
+                    <p>
+                        Close your notes and try to
+                        remember what you studied.
+                    </p>
+
+                </div>
+
+
+
+                <div class="advice-card">
+
+                    <div>
+                        🔁
+                    </div>
+
+                    <h2>
+                        Spaced Revision
+                    </h2>
+
+                    <p>
+                        Revise difficult topics over
+                        multiple days.
+                    </p>
+
+                </div>
+
+
+
+                <div class="advice-card">
+
+                    <div>
+                        📵
+                    </div>
+
+                    <h2>
+                        Remove Distractions
+                    </h2>
+
+                    <p>
+                        Keep your phone notifications
+                        away while studying.
+                    </p>
+
+                </div>
+
+
+
+                <div class="advice-card">
+
+                    <div>
+                        💧
+                    </div>
+
+                    <h2>
+                        Take Breaks
+                    </h2>
+
+                    <p>
+                        Drink water, stretch and give
+                        your mind short breaks.
+                    </p>
+
+                </div>
+
+
+
+                <div class="advice-card">
+
+                    <div>
+                        🎯
+                    </div>
+
+                    <h2>
+                        Set One Goal
+                    </h2>
+
+                    <p>
+                        Decide what you want to finish
+                        before starting.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACCURACY
+        ================================================= -->
+
+        <section id="accuracy"
+                 class="page">
+
+
+            <div class="page-heading">
+
+
+                <div>
+
+                    <p>
+                        YOUR PERFORMANCE
+                    </p>
+
+
+                    <h1>
+                        Accuracy
+                    </h1>
+
+
+                    <span>
+                        Understand your study performance.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="accuracy-grid">
+
+
+                <!-- MAIN ACCURACY -->
+
+                <div class="box accuracy-main">
+
+
+                    <div class="big-circle">
+
+                        <span id="bigAccuracy">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Your Accuracy
+                    </h2>
+
+
+                    <p>
+                        Accuracy is based on your completed tasks.
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- PERFORMANCE -->
+
+                <div class="box">
+
+
+                    <h2>
+                        Performance Breakdown
+                    </h2>
+
+
+
+                    <!-- TASK COMPLETION -->
+
+                    <div class="bar-item">
+
+
+                        <div>
+
+                            <span>
+                                Task Completion
+                            </span>
+
+                            <b id="taskBarText">
+                                0%
+                            </b>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <i id="taskBar">
+                            </i>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- TIMETABLE -->
+
+                    <div class="bar-item">
+
+
+                        <div>
+
+                            <span>
+                                Timetable Planning
+                            </span>
+
+                            <b id="timetableBarText">
+                                0%
+                            </b>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <i id="timetableBar">
+                            </i>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- CONSISTENCY -->
+
+                    <div class="bar-item">
+
+
+                        <div>
+
+                            <span>
+                                Consistency
+                            </span>
+
+                            <b id="consistencyText">
+                                0%
+                            </b>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <i id="consistencyBar">
+                            </i>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
